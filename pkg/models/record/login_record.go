@@ -1,15 +1,15 @@
-package config
+package record
 
 /*  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *
 *
 *   @Title:
-*       Config
+*       Login record
 *
 *   @Description:
-*		🤠
+*		登录信息表
 *
 *   @Remarks:
-*
+*		UserId		用户ID 逻辑外键
 *
 *   @Functions:
 *
@@ -22,18 +22,12 @@ package config
 *
 *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  */
 import (
-	cfg "qx/pkg/common/config"
+	"qx/pkg/common/essentials"
 )
 
-type Config struct {
-	UserDatapackConfig     cfg.MySQLConfiguration
-	RedisConfig            cfg.RedisConfiguration
-	ESConfig               cfg.ESConfiguration
-	IpRealAddressAPIConfig IpRealAddressAPI
+type LoginRecord struct {
+	essentials.BasicModel
+	UserId        string  `gorm:"type:VARCHAR(38);not null;index;"`
+	IPAddress     *string `gorm:"type:VARCHAR(20);"`
+	IPRealAddress *string `gorm:"type:VARCHAR(100);"`
 }
-type IpRealAddressAPI struct {
-	URL     string
-	AppCode string
-}
-
-var CONFIG Config

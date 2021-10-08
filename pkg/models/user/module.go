@@ -1,4 +1,4 @@
-package models
+package user
 
 import (
 	"qx/pkg/common/essentials"

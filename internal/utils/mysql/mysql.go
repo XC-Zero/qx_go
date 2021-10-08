@@ -11,7 +11,7 @@ var BatchSize = 20000
 
 var UserDatapackDB *gorm.DB
 
-func InitUserDB() {
+func InitUserDatapackDB() {
 	if UserDatapackDB != nil {
 		return
 	}

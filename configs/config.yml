@@ -1,0 +1,12 @@
+UserDatapackConfig:
+  LogMode: console
+  Host: 120.79.130.192
+  Port: 3306
+  DBName: qx_go
+  User: root
+  Password: CJMcjm136466!
+IpRealAddressAPI:
+  URL: http://cz88.rtbasia.com/search
+  AppKey: 204001230
+  AppSecret: 33RKsiOoEiM6aCcVylgZDLzybxjiLCsO
+  AppCode: c8e8b781bf7d4665b17fcbffbb00109c

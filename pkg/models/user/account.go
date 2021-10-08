@@ -1,12 +1,12 @@
-package config
+package user
 
 /*  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *
 *
 *   @Title:
-*       Config
+*       Account
 *
 *   @Description:
-*		🤠
+*		账户表
 *
 *   @Remarks:
 *
@@ -22,18 +22,13 @@ package config
 *
 *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  */
 import (
-	cfg "qx/pkg/common/config"
+	"qx/pkg/common/essentials"
 )
 
-type Config struct {
-	UserDatapackConfig     cfg.MySQLConfiguration
-	RedisConfig            cfg.RedisConfiguration
-	ESConfig               cfg.ESConfiguration
-	IpRealAddressAPIConfig IpRealAddressAPI
+type Account struct {
+	essentials.BasicModel
+	// 余额
+	Balances float64 `gorm:"type:decimal(20,2);not null;default:0.00"`
+	// 累计充值
+	AccumulatedRecharge float64 `gorm:"type:decimal(20,2);not null;default:0.00"`
 }
-type IpRealAddressAPI struct {
-	URL     string
-	AppCode string
-}
-
-var CONFIG Config
