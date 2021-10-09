@@ -2,7 +2,7 @@
 
 source_path=./cmd/management
 go_file=main.go
-image_name=quick_search_management
+image_name=qx_service
 build_output=management_server
 version=0.0.1
 
