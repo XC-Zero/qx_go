@@ -7,6 +7,7 @@ import (
 	cfg "qx/internal/config"
 	"qx/internal/utils/mysql"
 	"qx/pkg/common/config"
+	"qx/pkg/models/record"
 	"qx/pkg/models/user"
 
 	"strings"
@@ -22,12 +23,21 @@ func main() {
 		panic(err)
 	}
 	mysql.InitUserDatapackDB()
-	tables := []interface{}{
+	users := []interface{}{
 		&user.Role{},
 		&user.User{},
 		&user.Privilege{},
 		&user.Module{},
+		&user.Account{},
 	}
+	records := []interface{}{
+		&record.AccountRecord{},
+		&record.LoginRecord{},
+	}
+	var tables []interface{}
+	tables = append(tables, records...)
+	tables = append(tables, users...)
+
 	createDeltaTables(mysql.UserDatapackDB, tables)
 }
 

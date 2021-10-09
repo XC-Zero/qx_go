@@ -23,6 +23,7 @@ package record
 *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  *  */
 import (
 	"qx/pkg/common/essentials"
+	"qx/pkg/common/ip"
 )
 
 type LoginRecord struct {
@@ -30,4 +31,10 @@ type LoginRecord struct {
 	UserId        string  `gorm:"type:VARCHAR(38);not null;index;"`
 	IPAddress     *string `gorm:"type:VARCHAR(20);"`
 	IPRealAddress *string `gorm:"type:VARCHAR(100);"`
+}
+
+func (l *LoginRecord) TransferIPToRealAddress() {
+	if l.IPAddress != nil {
+		l.IPRealAddress = &ip.GetIpRealAddress(*l.IPAddress).Data.City
+	}
 }

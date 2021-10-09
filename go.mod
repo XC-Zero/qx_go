@@ -3,6 +3,7 @@ module qx
 go 1.17
 
 require (
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/elastic/go-elasticsearch/v7 v7.15.0
 	github.com/go-redis/redis/v7 v7.4.1
 	github.com/google/uuid v1.3.0
@@ -11,9 +12,8 @@ require (
 	github.com/pkg/errors v0.9.1
 	github.com/sirupsen/logrus v1.8.1
 	github.com/spf13/viper v1.9.0
+	github.com/tealeg/xlsx v1.0.5
 	github.com/twitchtv/twirp v8.1.0+incompatible
-	gitlab.mvalley.com/datapack/cain v0.2.33-beta
-	gitlab.mvalley.com/third-party/nebula-go v0.0.1
 	go.mongodb.org/mongo-driver v1.7.3
 	gorm.io/driver/mysql v1.1.2
 	gorm.io/gorm v1.21.15
@@ -21,7 +21,6 @@ require (
 
 require (
 	github.com/deepmap/oapi-codegen v1.8.2 // indirect
-	github.com/facebook/fbthrift v0.0.0-20190922225929-2f9839604e25 // indirect
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
 	github.com/go-sql-driver/mysql v1.6.0 // indirect
 	github.com/go-stack/stack v1.8.0 // indirect
@@ -31,6 +30,7 @@ require (
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.2 // indirect
 	github.com/klauspost/compress v1.13.6 // indirect
+	github.com/kr/text v0.2.0 // indirect
 	github.com/lib/pq v1.1.1 // indirect
 	github.com/magiconair/properties v1.8.5 // indirect
 	github.com/mitchellh/mapstructure v1.4.2 // indirect
@@ -49,6 +49,7 @@ require (
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c // indirect
 	golang.org/x/sys v0.0.0-20210823070655-63515b42dcdf // indirect
 	golang.org/x/text v0.3.6 // indirect
+	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 	gopkg.in/ini.v1 v1.63.2 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 )

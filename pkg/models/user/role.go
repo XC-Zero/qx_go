@@ -6,7 +6,7 @@ package user
 *       Role
 *
 *   @Description:
-*
+*		对于qx而言 基础 role 分为 5 类，Administrative Staff , Teacher , Student , Parent , Manager
 *
 *   @Remarks:
 *
@@ -29,8 +29,9 @@ import (
 // Role 预定义角色表
 type Role struct {
 	essentials.BasicModel
-	RoleName   string `gorm:"type:VARCHAR(20);not null"`
-	privileges string `gorm:"type:VARCHAR(500);not null"`
+	RoleName   string  `gorm:"type:VARCHAR(20);not null"`
+	RoleRemark *string `gorm:"type:VARCHAR(200);"`
+	privileges string  `gorm:"type:VARCHAR(500);not null"`
 }
 
 func (r *Role) GrantPrivileges(privilege []Privilege) {
