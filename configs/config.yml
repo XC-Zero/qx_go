@@ -5,7 +5,7 @@ UserDatapackConfig:
   DBName: qx_go
   User: root
   Password: CJMcjm136466!
-IpRealAddressAPI:
+IpRealAddressAPIConfig:
   URL: http://cz88.rtbasia.com/search
   AppKey: 204001230
   AppSecret: 33RKsiOoEiM6aCcVylgZDLzybxjiLCsO

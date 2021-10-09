@@ -14,37 +14,46 @@ import (
 // response：    请求返回的内容
 
 func Get(url string, headerMap map[string]string, queryParam map[string]string) string {
-
 	// 超时时间：5秒
 	client := &http.Client{Timeout: 5 * time.Second}
 	if len(queryParam) > 0 {
 		url += "?"
+		i := 0
 		for key, value := range queryParam {
-			url += key + "=" + value + "&"
+			if i == 0 {
+				url += key + "=" + value
+			} else {
+				url += "&" + key + "=" + value
+			}
+			i++
 		}
 	}
-
-	resp, err := client.Get(url)
+	request, err := http.NewRequest("GET", url, nil)
 	if err != nil {
-		panic(err)
+		println(err)
 	}
 	for key, value := range headerMap {
-		resp.Header.Set(key, value)
+		request.Header.Add(key, value)
 	}
+	response, _ := client.Do(request)
 
-	defer resp.Body.Close()
+	defer func(Body io.ReadCloser) {
+		err := Body.Close()
+		if err != nil {
+			println(err)
+		}
+	}(response.Body)
 	var buffer [512]byte
 	result := bytes.NewBuffer(nil)
 	for {
-		n, err := resp.Body.Read(buffer[0:])
+		n, err := response.Body.Read(buffer[0:])
 		result.Write(buffer[0:n])
-		if err != nil && err == io.EOF {
+		if err == io.EOF {
 			break
 		} else if err != nil {
-			panic(err)
+			println(err)
 		}
 	}
-
 	return result.String()
 }
 
@@ -66,7 +75,12 @@ func Post(url string, data interface{}, contentType string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	defer resp.Body.Close()
+	defer func(Body io.ReadCloser) {
+		err := Body.Close()
+		if err != nil {
+			println(err)
+		}
+	}(resp.Body)
 
 	result, err := ioutil.ReadAll(resp.Body)
 	return string(result), err

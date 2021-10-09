@@ -32,8 +32,16 @@ type Config struct {
 	IpRealAddressAPIConfig IpRealAddressAPI
 }
 type IpRealAddressAPI struct {
-	URL     string
-	AppCode string
+	URL       string
+	AppKey    string
+	AppSecret string
+	AppCode   string
 }
 
-var CONFIG Config
+var CONFIG *Config
+
+// InitConfig ...
+func InitConfig(configName string, configPaths []string) error {
+	CONFIG = new(Config)
+	return cfg.InitConfiguration(configName, configPaths, CONFIG)
+}
